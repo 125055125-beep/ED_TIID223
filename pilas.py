@@ -18,3 +18,5 @@ pagina_salida = historial.pop()
 print("saliendo de:", pagina_salida)
 
 print("historial actualizado:" , historial)
+
+
