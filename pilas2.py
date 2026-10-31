@@ -1,65 +1,36 @@
-def pedir_numero():
-    """Solicita un número al usuario y lo valida."""
-    while True:
-        try:
-            return float(input("Ingresa un número: "))
-        except ValueError:
-            print("Entrada no válida. Debes ingresar un número.")
+elementos = []
+repetir = True
 
-
-def mostrar_menu():
-    print("\n===== MENÚ PILA =====")
-    print("1. Insertar en pila")
-    print("2. Borrar en pila")
-    print("3. Listar pila")
+while repetir:
+    print("\n--- PILA ---")
+    print("1. Apilar")
+    print("2. Desapilar")
+    print("3. Mostrar elementos")
     print("4. Salir")
 
-
-def ejecutar_pila():
-    pila = []
-
     while True:
-        mostrar_menu()
-        opcion = input("Elige una opción: ").strip()
+        opcion = input("Elige una opcion: ")
 
         if opcion == "1":
-            numero = pedir_numero()
-            pila.append(numero)  # Se apila en la cima
-            print(f"Se insertó {numero} en la pila.")
+            valor = int(input("Numero que deseas guardar: "))
+            elementos.append(valor)
+            print("Elemento agregado.")
 
         elif opcion == "2":
-            if pila:
-                eliminado = pila.pop()  # Se quita el último (cima)
-                print(f"Se eliminó el elemento de la cima: {eliminado}")
+            if len(elementos) == 0:
+                print("La pila esta vacia.")
             else:
-                print("La pila está vacía.")
+                print("Elemento eliminado:", elementos.pop())
 
         elif opcion == "3":
-            if pila:
-                print("Pila actual (base -> cima):", pila)
-                print("Vista vertical:")
-                for elemento in reversed(pila):
-                    print(f"  | {elemento} |")
-                print("  -------")
-            else:
-                print("La pila está vacía.")
+            print("Elementos de la pila:", elementos)
 
         elif opcion == "4":
-            print("Saliendo de la pila...")
+            repetir = False
             break
+        
 
         else:
-            print("Opción no válida. Elige entre 1 y 4.")
+            print("Opcion incorrecta.")
 
-
-def main():
-    while True:
-        ejecutar_pila()
-        respuesta = input("\n¿Deseas ejecutar el programa nuevamente? (s/n): ").strip().lower()
-        if respuesta != "s":
-            print("Programa finalizado.")
-            break
-
-
-if __name__ == "__main__":
-    main()
+print("Programa finalizado.")
